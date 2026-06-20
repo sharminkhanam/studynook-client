@@ -3,6 +3,7 @@ import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
 
 import React from 'react'
+import toast from "react-hot-toast";
 
 const DeleteAlert = ({singleRoom}) => {
      const { roomName,_id} = singleRoom;
@@ -16,7 +17,11 @@ const DeleteAlert = ({singleRoom}) => {
       },
         })
          const data = await res.json();
-    //console.log(data)
+    if(res.ok){
+      toast.success("Room deleted successfully")
+    }else{
+      toast.error(data?.message || "failed to delete room");
+    }
      
      }
 
@@ -35,7 +40,7 @@ const DeleteAlert = ({singleRoom}) => {
             <AlertDialog.Body>
               <p>
                 This will permanently delete <strong>{roomName}</strong> and all of its
-                data. This action cannot be undone.
+                data. 
               </p>
             </AlertDialog.Body>
             <AlertDialog.Footer>
