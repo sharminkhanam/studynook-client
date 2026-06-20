@@ -27,7 +27,10 @@ const AddRoomsPage = () => {
       body:JSON.stringify(room)
     })
     const data = await res.json();
-    toast.success("Add New Room successfully")
+    if(res.ok){
+       toast.success("Add New Room successfully")
+    }
+   
     redirect('/rooms')
     console.log(data)
   }

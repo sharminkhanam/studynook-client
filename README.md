@@ -34,3 +34,47 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## StudyNook README.md##
+
+## 
+Project name : studyNook
+server side : studynook2-server
+client-side : studynook2
+
+Description : StudyNook is a full-stack web application where users can browse,book, and manage study rooms in a library. Room owners can list their rooms,and users can book available time slots within any conflicts
+
+## Deploy on Vercel
+
+Features :
+* Secure authentication uusing JWT 
+* Add, update, and delete study rooms 
+* Book rooms with date and time slot selection
+* My Bookings for users
+* My Listings for room owners 
+* Responsive
+
+*Frontend :
+* Next.js , react-hot-toast,react-icon,heroUi
+
+Backend: Express.js, mongodb, jwt,cors
+Authentication :
+ *Email/password login 
+* Google OAuth login 
+* Protected routes
+## APi Featuers 
+*Room
+- get/room
+- post/room
+-get/room/:id
+- patch/room:id
+- delete/room:id
+## Bookings
+- get/bookings
+-get/bookings/:userId
+ - post/bookings
+ - delete/booking/:bookingId
+ * get/my-bookings
+ *get/my-listing
+
+ 
