@@ -2,6 +2,7 @@ import BookingCard from '@/components/BookingCard';
 import DeleteAlert from '@/components/DeleteAlert';
 import EditNodal from '@/components/EditNodal';
 import { auth } from '@/lib/auth';
+import { authClient } from '@/lib/auth-client';
 import { Button, Card, Description } from '@heroui/react';
 import { headers } from 'next/headers';
 import Image from 'next/image';
@@ -14,9 +15,15 @@ export  const metadata = {
 
 const RoomDetailPage = async({params}) => {
     const {id} = await params;
+       const session = await auth.api.getSession({
+        headers:await headers() // you need to pass the headers object.
+    });
+    const user = session?.user;
+    console.log(user)
     const {token} = await auth.api.getToken({
       headers: await headers()
     });
+     
     //console.log(token) server compnent
     const res = await fetch(`http://localhost:5000/room/${id}`
       ,{
@@ -27,15 +34,25 @@ const RoomDetailPage = async({params}) => {
   );
     const singleRoom = await res.json()
     //console.log("singleRoom",singleRoom)
-     const {roomName,floor,hourlyRate,imageUrl,amenities,description,bookingCount,ownerName} = singleRoom;
+     const {roomName,imageUrl,amenities,description,ownerId} = singleRoom;
+     if(!singleRoom){
+      return "Room not Found"
+     }
+     const isOwner = user?.id === ownerId;
+     console.log(ownerId)
   return (
     <div className=' max-w-7xl mx-auto '>RoomDetailPage
      
       <div className=''>
-          <div className='flex justify-end gap-3 my-5'>
+        {
+          isOwner && (
+             <div className='flex justify-end gap-3 my-5'>
             <EditNodal singleRoom={singleRoom}/>
             <DeleteAlert singleRoom={singleRoom}/>
           </div>
+          )
+        }
+         
       </div>
      <Card className="w-full items-stretch md:flex-row">
           <div className='relative w-full aspect-square'>
@@ -58,7 +75,7 @@ const RoomDetailPage = async({params}) => {
                   amenities.map((item,index) => <p key={index} className='border-2 p-2'>{item}</p>)}
               </div>
               
-              
+              <p>OnwnerId:{ownerId}</p>
               </div>
              <Link href='/login' ><Button>Login To Book</Button></Link>
             </div>

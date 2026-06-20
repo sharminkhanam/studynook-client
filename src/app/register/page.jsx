@@ -5,11 +5,11 @@ import {Check} from "@gravity-ui/icons";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-//import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 //import { toast } from "react-toastify";
 
 const RegisterPage = () => {
-    //const router = useRouter();
+    const router = useRouter();
     const onSubmit = async(e)=>{
         e.preventDefault();
         const name = e.target.name.value;
@@ -45,10 +45,9 @@ const RegisterPage = () => {
        }, 1000)
     }
     const handelSignInGoole = async () => {
-        await authClient.signIn.social({
+       const data = await authClient.signIn.social({
             provider: "google"
         });
-     
     }
     return (
         <div >
