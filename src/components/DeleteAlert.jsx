@@ -39,8 +39,8 @@ const DeleteAlert = ({singleRoom}) => {
               </p>
             </AlertDialog.Body>
             <AlertDialog.Footer>
-              <Button onClick={handelDelete} slot="close" variant="tertiary">
-                Cancel
+              <Button onClick={handelDelete}  variant="tertiary">
+                Delete
               </Button>
              
             </AlertDialog.Footer>
