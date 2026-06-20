@@ -77,7 +77,7 @@ const Navbar = () => {
 				<FaBars /></Button>
     </div>
 
-     {/* Mobile Menu */}
+     {/** mobile menu */}
      {
         open && (<>
         <div className='md:hidden px-4 pb-4  space-y-3'>
@@ -107,12 +107,8 @@ const Navbar = () => {
                     <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback> 
                         <span>{user.name}</span>
                    </Avatar>
-                
-                        
                     <Button onClick={handelSignOut} variant='danger'
                     >SignOut</Button>
-                
-                  
                     </div>
                 </>)}
         </div>
