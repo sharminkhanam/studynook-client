@@ -6,15 +6,14 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import NavLink from './NavLink';
 import { FaBars } from "react-icons/fa6";
+import { FiBookOpen } from 'react-icons/fi';
 
 
 
 const Navbar = () => {
       const userData = authClient.useSession();
       const user = userData.data?.user;
-      const [open, setOpen] = useState(false)
-      //const {data:session} =authClient.useSession();extra
-    //const user = session?.user;
+      const [open, setOpen] = useState(false);
     //console.log(user)
     const handelSignOut = async () => {
         await authClient.signOut()
@@ -24,9 +23,9 @@ const Navbar = () => {
     <div className='max-w-7xl mx-auto flex justify-between items-center p-4'>
             <div className='flex items-center gap-2'>
                 <p className=' border border-2 bg-gray-950 p-3 rounded-full'>
+                    <FiBookOpen className="border border-2 rounded-full p-2 bg-gray-700" />
                 <span className='text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-700 bg-clip-text text-transparent'>SN</span>
                 </p>
-       
                 <h1 className='text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-700 bg-clip-text text-transparent'>
                 StudyNook
                 </h1>
