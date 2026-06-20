@@ -52,7 +52,7 @@ const EditNodal = ({singleRoom}) => {
                           className="space-y-4"
                         >
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            {/* Destination Name */}
+                            {/* room Name */}
                             <div className="md:col-span-2">
                               <TextField defaultValue={roomName} name="roomName" isRequired>
                                 <Label>Room Name</Label>
@@ -152,7 +152,7 @@ const EditNodal = ({singleRoom}) => {
               
                <Modal.Footer>
              
-              <Button type="submit" >Save</Button>
+              <Button type="submit">Save</Button>
             </Modal.Footer>
             
                         </form>

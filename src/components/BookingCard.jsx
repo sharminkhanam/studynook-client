@@ -65,7 +65,6 @@ const BookingCard = ({singleRoom}) => {
             hourlyRate,
             capacity,
             ownerName,
-          
             date,
             startTime,
             endTime,
@@ -91,29 +90,23 @@ const BookingCard = ({singleRoom}) => {
     //console.log(singleRoom)
   return (
   
-    <Card className="w-full items-stretch md:flex-row  items-center">
+    <Card className="w-full md:p-6 p-4 flex flex-col gap-4 md:flex-row ">
      
          <div className="flex flex-1 flex-col gap-3">
-          BookingCard
-         
-              <h2>{roomName}</h2>
-              <div>
+              <h2 className='font-bold md:text-2xl'>{roomName}</h2>
+              <div className='space-y-5'>
                <div className='flex justify-between gap-6'>
                 <p>Floor:{floor}</p>
                <p>Capacity:{capacity}seates</p>
                </div>
                <div className='flex justify-between'>
                 <p>HourlyRate:{hourlyRate}/hour</p>
-               <p>Booked:{bookingCount}</p>
+               <p>BookingCount:{bookingCount}</p>
+               <p className='font-bold'>OwnerName:{ownerName}</p>
                </div>
                <div>
-      
-
-   
-
-    
                </div>
-               <div>
+               <div className='flex gap-3'>
                 <input type="date" className='border p-2 mt-2'
                 onChange={(e) =>setDate(e.target.value)} 
                 />
@@ -137,9 +130,9 @@ const BookingCard = ({singleRoom}) => {
                     ))
                   }
                 </select>
-                <p>TotalCost:${totalCost()}</p>
+                
                </div>
-             
+             <p>TotalCost:${totalCost()}</p>
               </div>
  
      <Button onClick={handelBooking}>Booking Now</Button>

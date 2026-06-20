@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React from 'react'
 
 const RoomCard = ({room}) => {
-    const { _id,roomName,floor,capacity,hourlyRate,imageUrl,amenities} = room;
+    const { _id,roomName,floor,capacity,hourlyRate,imageUrl,amenities,description} = room;
   return (
     //<div>RoomCard
         //{description}
@@ -27,12 +27,12 @@ const RoomCard = ({room}) => {
         <h2>{roomName}</h2>
         <div>
          <p>Floor:{floor}</p>
-        
+        <p>Description:{description}</p>
          <p>Capacity:{capacity}seates</p>
          <p>HourlyRate:{hourlyRate}/hour</p>
          <p>Amenities:{amenities}</p>
         </div>
-       <Link href={`/rooms/${_id}`} ><Button className={'w-full'}> View Details Book Now</Button></Link>
+       <Link href={`/rooms/${_id}`} ><Button className={'w-full hover:bg-purple-600 '}> View Details</Button></Link>
       </div>
     </div>
     </Card>

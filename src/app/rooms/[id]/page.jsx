@@ -27,12 +27,12 @@ const RoomDetailPage = async({params}) => {
   );
     const singleRoom = await res.json()
     //console.log("singleRoom",singleRoom)
-     const {roomName,floor,capacity,hourlyRate,imageUrl,amenities,description,bookingCount,owner} = singleRoom;
+     const {roomName,floor,capacity,hourlyRate,imageUrl,amenities,description,bookingCount,ownerName} = singleRoom;
   return (
     <div className=' max-w-7xl mx-auto '>RoomDetailPage
      
       <div className=''>
-          <div className='flex justify-end gap-3'>
+          <div className='flex justify-end gap-3 my-5'>
             <EditNodal singleRoom={singleRoom}/>
             <DeleteAlert singleRoom={singleRoom}/>
           </div>
@@ -42,27 +42,21 @@ const RoomDetailPage = async({params}) => {
               <Image
              src={imageUrl}
              alt={roomName}
-           width={500}
-           height={300}
+           width={800}
+           height={500}
              className="object-cover rounded"
            />
              <div className="flex flex-1 flex-col gap-3">
              
-                <h2>{roomName}</h2>
+          
               <p>{description}</p>
-             
+            
              
               <div>
-                <div className='flex justify-between'>
-                   <p>Floor:{floor}</p>
-                  <p>Capacity:{capacity}seates</p>
-                </div>
-                <div className='flex justify-between'>
-                   <p>HourlyRate:{hourlyRate}/hour</p>
-               <p>Booked:{bookingCount}</p>
-               
-                </div>
-                <p>Amenities:{amenities}</p>
+                
+                <div className='flex  gap-2 '><h3 className='font-bold'>Amenities:</h3>{
+                  amenities.map((item,index) => <p key={index} className='border-2 p-2'>{item}</p>)}
+              </div>
               
               
               </div>
