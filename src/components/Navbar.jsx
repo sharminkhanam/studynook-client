@@ -22,9 +22,8 @@ const Navbar = () => {
     <div className='bg-white '>
     <div className='max-w-7xl mx-auto flex justify-between items-center p-4'>
             <div className='flex items-center gap-2'>
-                <p className=' border border-2 bg-gray-950 p-3 rounded-full'>
-                    <FiBookOpen className="border border-2 rounded-full p-2 bg-gray-700" />
-                <span className='text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-700 bg-clip-text text-transparent'>SN</span>
+                <p className=' border border-2 p-3 rounded-full bg-gradient-to-r from-purple-700 to-blue-700'>
+                    <FiBookOpen size={28} className=" rounded-full text-white " />
                 </p>
                 <h1 className='text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-700 bg-clip-text text-transparent'>
                 StudyNook
@@ -55,7 +54,7 @@ const Navbar = () => {
         )
      }
       </ul>
-      {/** auth desktop */}
+      {/** auth desktop menu */}
       <div className='hidden md:flex items-center gap-3'>
         {
             !user ? (<>
