@@ -1,10 +1,11 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
 
 import React from 'react'
 
 const DeleteAlert = ({singleRoom}) => {
-     const {description,country, roomName,_id} = singleRoom;
+     const { roomName,_id} = singleRoom;
      const handelDelete = async()=>{
       const {data:tokenData} = await authClient.token();
         const res =await fetch(`http://localhost:5000/room/${_id}`,{
@@ -41,9 +42,7 @@ const DeleteAlert = ({singleRoom}) => {
               <Button onClick={handelDelete} slot="close" variant="tertiary">
                 Cancel
               </Button>
-              <Button slot="close" variant="danger">
-                Delete Project
-              </Button>
+             
             </AlertDialog.Footer>
           </AlertDialog.Dialog>
         </AlertDialog.Container>

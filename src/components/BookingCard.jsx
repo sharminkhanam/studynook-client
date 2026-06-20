@@ -5,24 +5,21 @@ import { Button, Card, DateField, Description, FieldError, Label } from '@heroui
 import Image from 'next/image';
 
 import React, { useState } from 'react'
-import { toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const BookingCard = ({singleRoom}) => {
       const userData = authClient.useSession();
         const user = userData.data?.user;
       
   
-         //const {data:session} =authClient.useSession();
-            //const user = session?.user;
-        //console.log(user)
-        //console.log(singleRoom)
+       
     const {_id,roomName,floor,capacity, 
       hourlyRate,bookingCount,imageUrl,ownerName} = singleRoom;
         const [date, setDate] = useState(null);
         const [startTime, setStartTime] = useState("");
         const [endTime, setEndTime] = useState("");
       
-        
       const hours = [
         "08:00AM","09:00AM","10:00AM","11:00AM","12:00PM",
         "01:00PM","02:00PM","03:00PM","04:00PM","05:00PM",
@@ -47,10 +44,7 @@ const BookingCard = ({singleRoom}) => {
         if(end <= start) return 0;
         return (end-start) * hourlyRate;
       };
-         
-     
-    
-    //console.log(new Date(date))
+  
     const handelBooking = async()=>{
         const bookingData={
             userId: user?.id,
@@ -70,7 +64,7 @@ const BookingCard = ({singleRoom}) => {
             endTime,
             totalCost: totalCost()
         }
-        //console.log(bookingData)
+        
         const {data:tokenData} = await authClient.token();
         console.log(tokenData)
          const res = await fetch('http://localhost:5000/booking', {
@@ -82,7 +76,12 @@ const BookingCard = ({singleRoom}) => {
           body:JSON.stringify(bookingData)
         })
         const data = await res.json();
-        toast.success("Your booked successfully")
+        if(data){
+          toast.success("Your booked successfully")
+        }else{
+          toast.error("Booking failed")
+        }
+        
         console.log(data)
        
     }

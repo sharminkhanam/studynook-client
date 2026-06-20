@@ -2,7 +2,7 @@ import BookingCard from '@/components/BookingCard';
 import DeleteAlert from '@/components/DeleteAlert';
 import EditNodal from '@/components/EditNodal';
 import { auth } from '@/lib/auth';
-import { authClient } from '@/lib/auth-client';
+
 import { Button, Card, Description } from '@heroui/react';
 import { headers } from 'next/headers';
 import Image from 'next/image';
@@ -34,26 +34,20 @@ const RoomDetailPage = async({params}) => {
   );
     const singleRoom = await res.json()
     //console.log("singleRoom",singleRoom)
+  
      const {roomName,imageUrl,amenities,description,ownerId} = singleRoom;
-     if(!singleRoom){
-      return "Room not Found"
-     }
      const isOwner = user?.id === ownerId;
-     console.log(ownerId)
+    
   return (
     <div className=' max-w-7xl mx-auto '>RoomDetailPage
-     
-      <div className=''>
-        {
+         {
           isOwner && (
-             <div className='flex justify-end gap-3 my-5'>
+              <div className='flex justify-end gap-3 my-5'>
             <EditNodal singleRoom={singleRoom}/>
             <DeleteAlert singleRoom={singleRoom}/>
           </div>
           )
-        }
-         
-      </div>
+         }
      <Card className="w-full items-stretch md:flex-row">
           <div className='relative w-full aspect-square'>
               <Image
@@ -71,13 +65,13 @@ const RoomDetailPage = async({params}) => {
              
               <div>
                 
-                <div className='flex  gap-2 '><h3 className='font-bold'>Amenities:</h3>{
-                  amenities.map((item,index) => <p key={index} className='border-2 p-2'>{item}</p>)}
+                <div className='flex  gap-2 '><h3 className='font-bold'>Amenities:{amenities}</h3>
+                 
               </div>
               
               <p>OnwnerId:{ownerId}</p>
               </div>
-             <Link href='/login' ><Button>Login To Book</Button></Link>
+             
             </div>
           </div>
          

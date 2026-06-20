@@ -4,9 +4,10 @@ import {Envelope} from "@gravity-ui/icons";
 import React from 'react'
 
 import {Button, FieldError, Select,Input, Label, Modal, Surface, TextField, ListBox, TextArea} from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
 
 const EditNodal = ({singleRoom}) => {
-    const {_id,roomName,capacity,floor,hourlyRate} = singleRoom;
+    const {_id,roomName} = singleRoom;
    
       const onSubmit= async(e)=>{
     e.preventDefault()
