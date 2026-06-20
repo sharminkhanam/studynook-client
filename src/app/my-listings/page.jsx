@@ -31,10 +31,7 @@ const MyListingsPage = async() => {
             }
           }
   )
-  //console.log("Status:", res.status);
   
-  ///const text = await res.text();
-  //console.log(text);
   const rooms = await res.json()
   //console.log(rooms)
   return (

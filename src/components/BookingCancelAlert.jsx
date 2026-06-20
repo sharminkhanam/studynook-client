@@ -1,10 +1,11 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
-import { Turret_Road } from "next/font/google";
+
 
 import React, { useState } from 'react'
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
+
 
 const BookingCancelAlert = ({bookingId}) => {
   const [loading, setLoading] = useState(false);
@@ -21,7 +22,12 @@ const BookingCancelAlert = ({bookingId}) => {
    
     })
     const data = await res.json();
-   toast.success("Booking cancel successfully")
+    if(data){
+      toast.success("Booking cancel successfully")
+    }else{
+      toast.error("Failed to booking cCancel")
+    }
+   
     //console.log(data)
     window.location.reload();
 

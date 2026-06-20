@@ -20,7 +20,7 @@ const {token} = await auth.api.getToken({
     });
     const user = session?.user;
     console.log(token)
-//console.log(user)
+
 //const res = await fetch(`http://localhost:5000/booking/${user?.id}`)
 const res = await fetch("http://localhost:5000/my-bookings",
     {
@@ -29,12 +29,9 @@ const res = await fetch("http://localhost:5000/my-bookings",
           }
         }
 )
-//console.log("Status:", res.status);
 
-///const text = await res.text();
-//console.log(text);
 const bookings = await res.json()
-console.log(bookings)
+//console.log(bookings)
   return (
     <div className='max-w-7xl mx-auto my-10 '>
       <h1 className='text-3xl font-bold my-5 '>MyBooking</h1>
