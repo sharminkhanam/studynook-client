@@ -27,7 +27,7 @@ const RoomDetailPage = async({params}) => {
   );
     const singleRoom = await res.json()
     //console.log("singleRoom",singleRoom)
-     const {roomName,floor,capacity,hourlyRate,imageUrl,amenities,description,bookingCount,ownerName} = singleRoom;
+     const {roomName,floor,hourlyRate,imageUrl,amenities,description,bookingCount,ownerName} = singleRoom;
   return (
     <div className=' max-w-7xl mx-auto '>RoomDetailPage
      
