@@ -1,10 +1,9 @@
 
-
-
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram,FaLinkedinIn } from "react-icons/fa";
 import { FiBookOpen } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
+import Link from "next/link";
 
     const Footer = () => {
         return (
@@ -30,9 +29,19 @@ import { FaXTwitter } from "react-icons/fa6";
             <div className="space-y-3">
                 <h3>Useful Links</h3>
                 <ul className="space-y-3">
-                    <li>Home</li>
-                    <li>Rooms</li>
-                    <li>Contact Us</li>
+                     <li>
+                                    <Link href={'/'}>Home</Link>
+                                </li>
+                                 <li>
+                                    <Link href={'/rooms'}>Rooms</Link>
+                                </li>
+                                 <li>
+                                                <Link href={'/my-bookings'}>My Bookings</Link>
+                                            </li>
+                                             <li>
+                                                <Link href={'/my-listings'}>My Listings</Link>
+                                            </li>
+                                            <li>Abot Studynook</li>
                    
                 </ul>
             </div>

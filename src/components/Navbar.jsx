@@ -72,7 +72,7 @@ const Navbar = () => {
             </>
         )}
          </div>
-       {/* Mobile Button */}
+       {/** mobile button */}
           <Button onClick = {() => setOpen(!open)} className="md:hidden text-2xl">
 				<FaBars /></Button>
     </div>
