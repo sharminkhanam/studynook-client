@@ -6,7 +6,8 @@ import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-//import { toast } from "react-toastify";
+import toast from "react-hot-toast";
+
 
 const RegisterPage = () => {
     const router = useRouter();
@@ -26,13 +27,11 @@ const RegisterPage = () => {
         
 
        });
-       //console.log({data,error})
+      
        if(data){
         redirect('/')
        }
-       //if(error){
-        //alert('falid')
-       //}
+    
        
        if(error) {
         toast.error(error.message || " Registration failed");

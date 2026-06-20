@@ -1,6 +1,6 @@
 import BookingCancelAlert from '@/components/BookingCancelAlert'
 import { auth } from '@/lib/auth'
-import { Button, Card } from '@heroui/react'
+
 import { headers } from 'next/headers'
 import Image from 'next/image'
 
