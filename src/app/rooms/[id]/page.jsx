@@ -16,7 +16,7 @@ export  const metadata = {
 const RoomDetailPage = async({params}) => {
     const {id} = await params;
        const session = await auth.api.getSession({
-        headers:await headers() // you need to pass the headers object.
+        headers:await headers() 
     });
     const user = session?.user;
     console.log(user)
@@ -58,18 +58,16 @@ const RoomDetailPage = async({params}) => {
              className="object-cover rounded"
            />
              <div className="flex flex-1 flex-col gap-3">
-             
-          
+            
               <p>{description}</p>
             
-             
               <div>
                 
                 <div className='flex  gap-2 '><h3 className='font-bold'>Amenities:{amenities}</h3>
                  
               </div>
               
-              <p>OnwnerId:{ownerId}</p>
+              <p>OwnerId:{ownerId}</p>
               </div>
              
             </div>

@@ -11,9 +11,6 @@ import toast, { Toaster } from 'react-hot-toast';
 const BookingCard = ({singleRoom}) => {
       const userData = authClient.useSession();
         const user = userData.data?.user;
-      
-  
-       
     const {_id,roomName,floor,capacity, 
       hourlyRate,bookingCount,imageUrl,ownerName} = singleRoom;
         const [date, setDate] = useState(null);
