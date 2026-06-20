@@ -4,16 +4,16 @@ import {Button, Description, FieldError, Form, Input, Label, TextField} from "@h
 import {Check} from "@gravity-ui/icons";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
-//import { useRouter } from "next/navigation";
-//import { toast } from "react-toastify";
+import toast from "react-hot-toast";
+
 
 const LoginPage = () => {
     //const router = useRouter();
     const onSubmit = async(e)=>{
         e.preventDefault();
-        //const name = e.target.name.value;
+      
         const email = e.target.email.value;
-        //const image = e.target.image.value;
+      
         const password = e.target.password.value;
         console.log({name,email,password})
         
@@ -29,19 +29,17 @@ const LoginPage = () => {
        if(data){
         redirect('/')
        }
-       if(error){
-        alert('falid')
-       }
+      
        
-       //if(error) {
-        //toast.error(error.message || " Registration failed");
-        //return;
-       //}
-       //toast.success("Registration successful")
+       if(error) {
+        toast.error(error.message || " Registration failed");
+        return;
+       }
+       toast.success("Registration successful")
    
-       //setTimeout(()=> {
-        //router.push('/login');
-       //}, 1000)
+       setTimeout(()=> {
+        router.push('/login');
+       }, 1000)
     }
     return (
         <div >
