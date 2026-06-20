@@ -1,6 +1,6 @@
 "use client"
 
-import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
+import {Button, Card, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
 import {Check} from "@gravity-ui/icons";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
@@ -49,7 +49,7 @@ const RegisterPage = () => {
         });
     }
     return (
-        <div >
+        <Card className="max-w-7xl mx-auto mt-10" >
          
         <h2 className=" text-2xl font-bold text-center my-5">Register your acoount</h2>
          
@@ -123,14 +123,15 @@ const RegisterPage = () => {
         </Button>
       </div>
     </Form>
+
     <div>
        <p className="text-center ">Don`t have an account? 
-          <Link  href={'/register'} className="text-red-500 ">Register</Link></p>
+          <Link  href={'/login'} className="text-red-500 ">Login</Link></p>
        <p className="text-center text-gray-600">Or</p>
       <Button className={"w-full bg-purple-600 px-2 py-1 rounded-full text-white"} 
       onClick={handelSignInGoole}>Login In with google</Button>
     </div>
-        </div>
+        </Card>
     );
 };
 

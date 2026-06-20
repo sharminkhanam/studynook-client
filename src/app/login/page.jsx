@@ -1,105 +1,78 @@
 "use client"
 
-import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
+import {Button, Card, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
 import {Check} from "@gravity-ui/icons";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import toast from "react-hot-toast";
 
 
-const LoginPage = () => {
-    //const router = useRouter();
+const LogInPage = () => {
+    const router = useRouter();
     const onSubmit = async(e)=>{
         e.preventDefault();
       
         const email = e.target.email.value;
-      
+    
         const password = e.target.password.value;
-        console.log({name,email,password})
+        console.log({email,password})
         
        const {data, error} = await authClient.signIn.email({
-     
-        email,
-    
-        password
-        
+        email,password,
+        callbackURL: '/'
 
        });
-       console.log({data,error})
-       if(data){
-        redirect('/')
-       }
-      
-       
        if(error) {
-        toast.error(error.message || " Registration failed");
+        toast.error(error.message || " Login failed");
         return;
        }
-       toast.success("Registration successful")
+       toast.success("Login successful")
    
-       setTimeout(()=> {
-        router.push('/login');
-       }, 1000)
+      
+        router.push('/'); 
+    }
+    const handelSignInGoole = async () => {
+        await authClient.signIn.social({
+            provider: "google"
+        });
+     
     }
     return (
-        <div >
-         
-        <h2 className=" text-2xl font-bold text-center my-5">Login your acoount</h2>
-         
-        <Form className="flex w-96 flex-col gap-4 mx-auto p-10 shadow-lg mt-10" onSubmit={onSubmit}>
-     
-      <TextField
-        isRequired
-        name="email"
-        type="email"
-        validate={(value) => {
-          if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-            return "Please enter a valid email address";
-          }
-          return null;
-        }}
-      >
-        <Label>Email</Label>
-        <Input placeholder="john@example.com" />
-        <FieldError />
-      </TextField>
+        <Card className="w-full max-w-md mx-auto mt-10">
 
-    
-      <TextField
-        isRequired
-        minLength={8}
-        name="password"
-        type="password"
-        validate={(value) => {
-          if (value.length < 8) {
-            return "Password must be at least 8 characters";
-          }
-          if (!/[A-Z]/.test(value)) {
-            return "Password must contain at least one uppercase letter";
-          }
-          if (!/[0-9]/.test(value)) {
-            return "Password must contain at least one number";
-          }
-          return null;
-        }}
-      >
-        <Label>Password</Label>
-        <Input placeholder="Enter your password" />
-        <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
-        <FieldError />
-      </TextField>
-      <div className="flex gap-2">
-        <Button type="submit">
-          <Check />
-          Submit
-        </Button>
-        <Button type="reset" variant="secondary">
-          Reset
-        </Button>
-      </div>
-    </Form>
-        </div>
+               <Card.Header>
+        <Card.Title className="text-2xl font-black text-center">Login your account</Card.Title>
+        
+      </Card.Header>   
+   <Form onSubmit={onSubmit}>
+        <Card.Content>
+          <div className="flex flex-col gap-4">
+            <TextField name="email" type="email">
+              <Label>Email</Label>
+              <Input placeholder="john@example.coml" variant="secondary" />
+            </TextField>
+            <TextField name="password" type="password">
+              <Label>Password</Label>
+              <Input placeholder="password" variant="secondary" />
+            </TextField>
+          </div>
+        </Card.Content>
+        <Card.Footer className="mt-4 flex flex-col gap-2">
+          <Button className="w-full text-xl" type="submit">
+            LogIn
+          </Button>
+         
+        </Card.Footer>
+      </Form>
+        <p className="text-center ">Don`t have an account? 
+          <Link  href={'/register'} className="text-red-500 ">Register</Link></p>
+       <p className="text-center text-gray-600">Or</p>
+      <Button className={"w-full bg-purple-600 px-2 py-1 rounded-full text-white"} 
+      onClick={handelSignInGoole}>Login In with google</Button>
+        
+        </Card>
     );
 };
 
-export default LoginPage;
+export default LogInPage;
