@@ -1,6 +1,7 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
+import { redirect } from "next/navigation";
 
 import React from 'react'
 import toast from "react-hot-toast";
@@ -18,9 +19,8 @@ const DeleteAlert = ({singleRoom}) => {
         })
          const data = await res.json();
     if(res.ok){
-      toast.success("Room deleted successfully")
-    }else{
-      toast.error(data?.message || "failed to delete room");
+      toast.success("Room deleted successfully");
+      redirect ("/rooms")
     }
      
      }

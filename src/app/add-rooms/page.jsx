@@ -5,7 +5,8 @@ import { FieldError, Button,Input, Label, ListBox, TextField,Select, TextArea, C
 import { redirect } from 'next/navigation'
 
 import React from 'react'
-import { toast } from 'react-toastify'
+import toast from 'react-hot-toast'
+
 
 
 const AddRoomsPage = () => {
@@ -29,6 +30,8 @@ const AddRoomsPage = () => {
     const data = await res.json();
     if(res.ok){
        toast.success("Add New Room successfully")
+    }else{
+      toast.error("Failed Add New Room")
     }
    
     redirect('/rooms')
