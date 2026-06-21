@@ -33,7 +33,7 @@ const res = await fetch("http://localhost:5000/my-bookings",
 const bookings = await res.json()
 //console.log(bookings)
   return (
-    <div className='max-w-7xl mx-auto my-10 '>
+    <div className='max-w-7xl mx-auto px-4 md:px-6 my-10 '>
       <h1 className='text-3xl font-bold my-5 '>MyBooking</h1>
        <div>
         {
@@ -49,8 +49,8 @@ const bookings = await res.json()
                    <div >
                        
                         <Image
-                        src={booking.imageUrl}
-                        alt={booking.roomName}
+                        src={booking.imageUrl || "https://cdn.pixabay.com/photo/2019/11/04/10/15/book-4600757_1280.jpg"}
+                        alt={booking.roomName || "Room Image"}
                         width={200}
                         height={100}
                         className=" w-full h-48 object-cover rounded"

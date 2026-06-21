@@ -46,7 +46,7 @@ const BookingCard = ({singleRoom}) => {
         const bookingData={
             userId: user?.id,
             userName:user?.name,
-            userImage:user?.image,
+            userImage:user?.image || "https://cdn.pixabay.com/photo/2019/11/04/10/15/book-4600757_1280.jpg",
             userEmail:user?.email,
             roomId: _id,
             bookingCount:bookingCount,
