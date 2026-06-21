@@ -44,7 +44,7 @@ const bookings = await res.json()
             ):
             ( <div >
             {
-              bookings.map(booking => <div key={booking._id} className='flex justify-between space-x-4 border border-2 rounded-md'>
+              bookings.map(booking => <div key={booking._id} className='flex flex-col md:flex-row  gap-4 border border-2 rounded-md p-4 mb-4 shadow'>
                
                    <div >
                        
@@ -53,25 +53,25 @@ const bookings = await res.json()
                         alt={booking.roomName}
                         width={200}
                         height={100}
-                        className="object-cover rounded"
+                        className=" w-full h-48 object-cover rounded"
                         />
                    
 
                     
-                  
+              
                     </div>
                     
-                    <div className=' shadow shadow-xl flex gap-3 items-center mx-auto'>
+                    <div className='  flex-1 grid md:grid-cols-4 grid-cols-2  gap-3 items-center '>
                       
                      <div>
                        <h2>
                         RoomName
-                        <p className='text-center'>{booking.roomName}</p></h2>
+                        <p>{booking.roomName}</p></h2>
                      </div>
                     <div>
                        <h2>
                       Capacity
-                      <p className='text-center'>{booking.capacity}</p>
+                      <p className='ml-6'>{booking.capacity}</p>
                     </h2>
                     </div>
                     <div className='text-center'>
